@@ -6,25 +6,25 @@ from models.user import User
 from security.utils import hash_password, verify_password
 from security.auth import create_access_token
 from dependencies.utils import get_db
-from schemas.user import UserOut
+from schemas.user import UserOut, UserCreate
 
 router = APIRouter(tags=["Auth"])
 
 @router.post("/register", response_model=UserOut)
 async def register_user(
-    form: OAuth2PasswordRequestForm = Depends(),
+    user: UserCreate,
     db: AsyncSession = Depends(get_db)
 ):
-    result = await db.execute(select(User).where((User.username == form.username) | (User.email == form.username)))
+    result = await db.execute(select(User).where((User.username == user.username) | (User.email == user.username)))
     existing_user = result.scalar_one_or_none()
 
     if existing_user:
         raise HTTPException(status_code=400, detail="User already exists")
 
     new_user = User(
-        username=form.username,
-        email=form.username,
-        password_hash=hash_password(form.password)
+        username=user.username,
+        email=user.email,
+        password_hash=hash_password(user.password)
     )
 
     db.add(new_user)
