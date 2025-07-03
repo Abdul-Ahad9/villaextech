@@ -10,15 +10,14 @@ A FastAPI backend with async PostgreSQL, JWT auth, and Google Gemini AI integrat
    ```bash
    git clone https://github.com/yourusername/villaextech.git
    cd villaextech
-
-	Create & activate virtual environment
-
+   
+1. **Create virtual env**
+	```
 	python3 -m venv venv
 	source venv/bin/activate
-	
-	
-	Install dependencies
-
+	```
+1. **Install and set dependencies**
+	```
 	pip install -r requirements.txt
 
 	Create .env file in project root with:
@@ -30,22 +29,23 @@ A FastAPI backend with async PostgreSQL, JWT auth, and Google Gemini AI integrat
 	DB_PORT=5432
 	GEMINI_URL=url
 	GEMINI_API_KEY=your_google_gemini_api_key
-	
-
-Run & Deploy Steps
-Run Locally
-
+	```
+## Run & Deploy Steps
+**Run Locally**
+```
 uvicorn main:app --reload 
-
-Access API docs at:
-
+```
+**Access API docs**
+```
 Swagger UI: http://localhost:8001/docs
 
 Redoc: http://localhost:8001/redoc
+```
+
+**OR Deploy with systemd**
 
 
-OR Deploy with systemd
-
-
-Live URL
+**Live URL**
+```
 http://162.244.24.16:8001/docs#/
+```
