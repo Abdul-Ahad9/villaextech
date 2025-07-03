@@ -49,3 +49,7 @@ Redoc: http://localhost:8001/redoc
 ```
 http://162.244.24.16:8001/docs#/
 ```
+
+```
+I have hosted on my personal vps
+```
